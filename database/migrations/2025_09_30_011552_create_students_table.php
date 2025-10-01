@@ -7,18 +7,21 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Executa a migration.
      */
     public function up(): void
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id(); // ID automático (chave primária)
+            $table->date('birth_date')->nullable();
+            $table->string('name'); // Nome do estudante
+            $table->string('email')->unique(); // Email único
+            $table->timestamps(); // created_at e updated_at
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverte a migration.
      */
     public function down(): void
     {
